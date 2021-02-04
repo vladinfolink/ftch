@@ -5,14 +5,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Graph } from "./pages/Graph";
 
 export function App(): React.ReactElement {
-  return (
-    // <Graph />
-    <Router>
-      <Switch>
-        <Route path="/" exact={true} component={Graph} />
-      </Switch>
-    </Router>
-  );
+  return <Router>
+    <Switch>
+      <Route path="/" exact={true} component={Graph} />
+    </Switch>
+  </Router>
 }
-
-export default App;
