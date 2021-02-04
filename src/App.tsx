@@ -1,16 +1,11 @@
 import * as React from "react";
 
-import { Fetch } from "./componentGate";
+import { Graph } from "./componentGate";
 
-class App extends React.Component {
-  public render() {
-    return (
-      <>
-        ...
-        <Fetch />
-      </>
-    );
-  }
+export function App(): React.ReactElement {
+  return (
+    <Graph />
+  );
 }
 
 export default App;

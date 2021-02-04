@@ -1,1 +1,1 @@
-export { Fetch } from "./components/Fetch";
+export { Graph } from "./components/Graph";

@@ -6,13 +6,15 @@
     "no-unused-expression": false,
     "ordered-imports": false,
     "only-arrow-functions": false,
-    "member-access": false
+    "member-access": false,
+    "noUnusedLocals": false
   },
   "linterOptions": {
     "exclude": [
       "config/**/*.js",
       "node_modules/**/*.ts",
-      "coverage/lcov-report/*.js"
+      "coverage/lcov-report/*.js",
+      "src/3d_lib"
     ]
   }
 }
