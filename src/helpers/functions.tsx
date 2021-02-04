@@ -1,6 +1,6 @@
 export const graphFuncs = {
   getLinks: function (nodesObject: any) {
-    const incipientLinks = [];
+    const incipientLinks: any[] = [];
 
     for (const id in nodesObject) {
       if (nodesObject.hasOwnProperty(id)) {
