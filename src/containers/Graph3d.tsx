@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ReactElement } from 'react'
+import { memo, useEffect } from 'react'
 
 
 import { connect } from "react-redux";
@@ -11,10 +11,17 @@ import { graphFuncs } from '../helpers/functions';
 const { getLinks } = graphFuncs;
 
 interface IGraph3dInterface {
-  nodes: any, links: any
+  nodes: any, links: any, fetchNode: any
 }
 
-function Graph3d({ nodes, links }: IGraph3dInterface): ReactElement {
+const Graph3d: React.FunctionComponent<IGraph3dInterface> = ({ nodes, links, fetchNode }) => {
+
+  useEffect(() => {
+    (async ()=> {
+      console.log('---->', await fetchNode('i_3'))
+    })()
+  }, [])
+
   return <ForceGraph3D graphData={{ nodes, links }} />
 }
 
@@ -26,5 +33,6 @@ const mapDispatchToProps = {
   fetchNode, deleteNode
 }
 
-
-export default connect(mapStateTopProps, mapDispatchToProps)(Graph3d)
+export default connect(mapStateTopProps, mapDispatchToProps)(
+  memo(Graph3d)
+)

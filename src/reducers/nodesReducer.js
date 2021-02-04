@@ -7,8 +7,8 @@ const omit = (obj, arr) =>
 
 export default (state = { ...nodesObject }, action) => {
   switch (action.type) {
-    case "FETCH_NODES":
-      return action.payload;
+    case "FETCH_NODE":
+      return state[action.payload];
     case "DELETE_NODE":
       return omit(state, [action.payload]);
     default:
