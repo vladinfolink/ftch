@@ -12,88 +12,98 @@ export const colors = {
 
 const sensoryNodes = {
   s_5: {
-    id: `s_5`,
     charge: -1,
     type: SENSORY,
-    img: {
-      indexes: 4,
-      imageName: "two",
-    },
     displayType: "image",
     links: {
       i_3: {
-        active: true,
+        gate: {
+          1: function(x) {
+            return new Promise((resolve) => {
+              setTimeout(() => {
+                resolve(x + 1);
+              }, 3000);
+            });
+          },
+        },
       },
     },
   },
   s_7: {
-    id: `s_7`,
     charge: -1,
     type: SENSORY,
-    img: {
-      indexes: 4,
-      imageName: "two",
-    },
     displayType: "text",
     links: {
-      i_3: {
-        active: true,
-      },
+      i_3: {},
     },
   },
   s_1: {
-    id: `s_1`,
     charge: -1,
     type: SENSORY,
-    img: "batman.jpg",
     displayType: "base",
     links: {
-      i_3: {
-        active: true,
-      },
+      i_3: {},
     },
   },
   s_4: {
-    id: `s_4`,
     charge: -1,
     type: SENSORY,
-    img: {
-      indexes: 4,
-      imageName: "two",
-    },
     displayType: "base",
     links: {
-      i_3: {
-        active: true,
-      },
+      i_3: {},
     },
   },
 };
 // Inter neurons firing when charged:
 export const interNodes = {
   i_2: {
-    id: `i_2`,
     charge: -1,
     type: INTER,
-    img: "NC-Profile-2077-Placeholder.jpg",
     displayType: "base",
     links: {
-      i_s_2: { active: true },
+      i_s_2: {},
     },
   },
   i_3: {
-    id: `i_3`,
     charge: -1,
     type: INTER,
-    img: {
-      indexes: 4,
-      imageName: "two",
-    },
     displayType: "base",
     links: {
-      i_s_2: { active: true },
+      i_s_2: {
+        gates: {
+          1: function(x) {
+            return new Promise((resolve) => {
+              setTimeout(() => {
+                resolve(x + 1);
+              }, 3000);
+            });
+          },
+          2: function(x) {
+            return new Promise((resolve) => {
+              setTimeout(() => {
+                resolve(x + 2);
+              }, 3000);
+            });
+          },
+        },
+      },
       s_1: {
-        active: true,
+        gates: {
+          1: function(x) {
+            return new Promise((resolve) => {
+              setTimeout(() => {
+                resolve(x + 3);
+              }, 3000);
+            });
+          },
+          2: function(x) {
+            return new Promise((resolve) => {
+              setTimeout(() => {
+                resolve(x + 4);
+              }, 3000);
+            });
+          },
+        },
       },
     },
   },
@@ -101,17 +111,20 @@ export const interNodes = {
 
 const interSuperNodes = {
   i_s_2: {
-    id: `i_s_2`,
     charge: -1,
     type: INTER_SUPER,
-    img: {
-      indexes: 4,
-      imageName: "two",
-    },
     displayType: "base",
     links: {
       m_3: {
-        active: true,
+        gates: {
+          1: function(x) {
+            return new Promise((resolve) => {
+              setTimeout(() => {
+                resolve(x + 3);
+              }, 3000);
+            });
+          },
+        },
       },
     },
   },
@@ -119,13 +132,8 @@ const interSuperNodes = {
 
 const motorNodes = {
   m_3: {
-    id: `m_3`,
     type: MOTOR,
     charge: -1,
-    img: {
-      indexes: 4,
-      imageName: "two",
-    },
     displayType: "base",
   },
 };
@@ -139,6 +147,7 @@ export const nodesObject = {
 
 for (const key in nodesObject) {
   if (nodesObject.hasOwnProperty(key)) {
+    nodesObject[key].id = key;
     nodesObject[key].color = colors[nodesObject[key].type];
   }
 }
