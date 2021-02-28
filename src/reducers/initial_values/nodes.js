@@ -17,8 +17,8 @@ const sensoryNodes = {
     displayType: "image",
     links: {
       i_3: {
-        gate: {
-          1: function(x) {
+        gates: {
+          'one': function(x) {
             return new Promise((resolve) => {
               setTimeout(() => {
                 resolve(x + 1);
@@ -41,9 +41,6 @@ const sensoryNodes = {
     charge: -1,
     type: SENSORY,
     displayType: "base",
-    links: {
-      i_3: {},
-    },
   },
   s_4: {
     charge: -1,
@@ -71,7 +68,7 @@ export const interNodes = {
     links: {
       i_s_2: {
         gates: {
-          1: function(x) {
+          'one': function(x) {
             return new Promise((resolve) => {
               setTimeout(() => {
                 resolve(x + 1);
@@ -89,7 +86,7 @@ export const interNodes = {
       },
       s_1: {
         gates: {
-          1: function(x) {
+          one: function(x) {
             return new Promise((resolve) => {
               setTimeout(() => {
                 resolve(x + 3);
@@ -117,7 +114,7 @@ const interSuperNodes = {
     links: {
       m_3: {
         gates: {
-          1: function(x) {
+          one: function(x) {
             return new Promise((resolve) => {
               setTimeout(() => {
                 resolve(x + 3);
