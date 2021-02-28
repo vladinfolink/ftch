@@ -6,7 +6,8 @@
   "private": true,
   "dependencies": {
     "@types/hoist-non-react-statics": "^3.3.1",
-    "hoist-non-react-statics": "^3.3.2"
+    "hoist-non-react-statics": "^3.3.2",
+    "traverse": "^0.6.6"
   },
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot",

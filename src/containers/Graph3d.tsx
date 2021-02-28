@@ -9,6 +9,19 @@ import { ForceGraph3D } from "react-force-graph";
 import { fetchNode, deleteNode } from '../actions';
 import { graphFuncs, utilFuncs } from '../helpers/functions';
 
+var traverse = require('traverse');
+
+const _obj = {
+  i_3: {
+    i_s_2: {
+      m_3: {},
+      m_4: {}
+    },
+    s_1: {}
+  }
+}
+console.log('------------ ', traverse(_obj).paths())
+
 interface IGraph3dInterface {
   nodes: any, links: any, fetchNode: any
 }
@@ -25,25 +38,7 @@ const Graph3d: React.FunctionComponent<IGraph3dInterface> = ({ nodes, links, fet
   console.log(pipeAsyncFunctions)
 
   const handleClick = async (_node: any) => {
-    const accumulateGateFunctions = (nodeId: string, arr: any[]) => {
-      const node = nodes[_node.id]
-
-      for (const objectName in node.links) {
-        if (
-          Object.prototype.hasOwnProperty.call(node.links, objectName)
-        ) {
-
-
-          const nodeGateFunction = node.links[objectName].gates[1];
-          console.log(objectName, nodeGateFunction)
-
-          // target gate 1:
-
-        }
-      }
-    }
-
-    accumulateGateFunctions(_node.id, [])
+    console.log(_node)
   }
 
   useEffect(() => {
